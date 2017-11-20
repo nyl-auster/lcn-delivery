@@ -1,7 +1,9 @@
 import React, { Component } from "react";
-import CourseForm from "./components/CourseForm";
-import HomePage from "./components/HomePage";
+import CourseForm from "./pages/CourseForm";
+import PostForm from "./pages/PostForm";
+import HomePage from "./pages/HomePage";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { ApolloProvider } from "react-apollo";
 import { ApolloClient } from "apollo-client";
 import { HttpLink } from "apollo-link-http";
 import { InMemoryCache } from "apollo-cache-inmemory";
@@ -32,6 +34,7 @@ class App extends Component {
             <Switch>
               <Route exact path="/" component={HomePage} />
               <Route path="/course/add" component={CourseForm} />
+              <Route path="/post/add" component={PostForm} />
             </Switch>
           </Router>
         </div>
