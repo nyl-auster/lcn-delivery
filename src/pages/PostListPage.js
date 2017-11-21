@@ -1,17 +1,15 @@
 import React from "react";
-import PostList from "../components/PostList";
+import PostList from "../components/post/PostList";
+import Loader from "../components/loader/Loader";
 import { graphql } from "react-apollo";
 import gql from "graphql-tag";
 
 class PostListPage extends React.Component {
   render() {
-    console.log(this.props);
-    if (this.props.data.loading) {
-      return <div>Chargement ...</div>;
-    }
+    const { loading, posts } = this.props.data;
     return (
       <div className="container">
-        <PostList posts={this.props.data.posts} />
+        {loading ? <Loader /> : <PostList posts={posts} />}
       </div>
     );
   }

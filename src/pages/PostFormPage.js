@@ -1,5 +1,5 @@
 import React from "react";
-import PostForm from "../components/PostForm";
+import PostForm from "../components/post/PostForm";
 import { graphql } from "react-apollo";
 import gql from "graphql-tag";
 

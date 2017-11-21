@@ -1,4 +1,5 @@
 import React from "react";
+import PostListItem from "./PostListItem";
 
 const PostList = ({ posts }) => {
   if (!posts) {
@@ -8,7 +9,7 @@ const PostList = ({ posts }) => {
     <div>
       {posts.map(post => (
         <div key={post.id}>
-          <h2>{post.title}</h2>
+          <PostListItem post={post} />
         </div>
       ))}
     </div>

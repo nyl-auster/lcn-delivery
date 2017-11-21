@@ -25,9 +25,7 @@ class App extends Component {
           <section className="hero">
             <div className="hero-body">
               <div className="container">
-                <h1 className="title">
-                  Les coursiers nantais - prise de livraison
-                </h1>
+                <h1 className="title">LCN Delivery</h1>
               </div>
             </div>
           </section>
