@@ -7,7 +7,7 @@ class PostFormPage extends React.Component {
   render() {
     return (
       <div className="container">
-        <PostForm createPost={this.props.createPost} />
+        <PostForm {...this.props} createPost={this.props.createPost} />
       </div>
     );
   }
