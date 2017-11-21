@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import CourseForm from "./pages/CourseForm";
 import PostFormPage from "./pages/PostFormPage";
 import HomePage from "./pages/HomePage";
+import PostListPage from "./pages/PostListPage";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { ApolloProvider } from "react-apollo";
 import { ApolloClient } from "apollo-client";
@@ -33,8 +34,9 @@ class App extends Component {
           <Router>
             <Switch>
               <Route exact path="/" component={HomePage} />
-              <Route path="/course/add" component={CourseForm} />
-              <Route path="/post/add" component={PostFormPage} />
+              <Route exact path="/courses/add" component={CourseForm} />
+              <Route exact path="/posts/add" component={PostFormPage} />
+              <Route exact path="/posts" component={PostListPage} />
             </Switch>
           </Router>
         </div>
