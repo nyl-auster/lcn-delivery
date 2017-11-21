@@ -5,11 +5,12 @@ type User @model {
   id: ID! @isUnique
   name: String
   dateOfBirth: DateTime
-  posts: [Post!]! @relation(name: "UserPosts")
+  #posts: [Post!]! @relation(name: "UserPosts")
 }
 
 type Post @model {
   id: ID! @isUnique
   title: String!
-  author: User! @relation(name: "UserPosts")
+  content: String!
+  #user: User! @relation(name: "UserPosts")
 }

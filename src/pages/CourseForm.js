@@ -1,21 +1,9 @@
 import React from "react";
 import DatePicker from "react-mobile-datepicker";
-import moment from "moment";
 import PlacesAutocomplete, {
   geocodeByAddress,
   getLatLng
 } from "react-places-autocomplete";
-
-const NameField = () => {
-  return (
-    <div className="field">
-      <label className="label">Name</label>
-      <div className="control">
-        <input className="input" type="text" placeholder="Text input" />
-      </div>
-    </div>
-  );
-};
 
 class DatePickerField extends React.Component {
   state = {
