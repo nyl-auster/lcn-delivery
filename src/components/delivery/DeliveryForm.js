@@ -1,4 +1,5 @@
 import React from "react";
+import moment from "moment";
 import PlacesAutocomplete, {
   geocodeByAddress,
   getLatLng
@@ -10,22 +11,38 @@ class deliveryForm extends React.Component {
     const date = new Date();
     this.state = {
       form: {
-        address: {
+        requested_pickup_date: {
+          error: null,
+          value: moment().format("YYYY-MM-DD")
+        },
+        requested_drop_date: {
+          error: null,
+          value: moment().format("YYYY-MM-DD")
+        },
+        pickup_address: {
+          error: null,
           value: ""
         },
+        drop_address: {
+          error: null,
+          value: ""
+        },
+        montantHT: {
+          error: null,
+          value: "0"
+        },
         requested_pickup_time: {
-          error: "",
-          value: `${date.getHours()}:${(date.getMinutes() < 10 ? "0" : "") +
-            date.getMinutes()}`
+          error: null,
+          value: moment().format("H:mm")
         },
         requested_drop_time: {
           error: "",
-          value: `${date.getHours()}:${(date.getMinutes() < 10 ? "0" : "") +
-            date.getMinutes()}`
+          value: moment().format("H:mm")
         }
       }
     };
   }
+
   handleHourChange = event => {
     const newState = { ...this.state };
     let { name, value } = event.target;
@@ -33,14 +50,17 @@ class deliveryForm extends React.Component {
     newState.form[name].value = value;
     this.setState(newState);
   };
-  handleChange = event => {
+
+  handleFieldChange = event => {
     const target = event.target;
     const value = target.type === "checkbox" ? target.checked : target.value;
     const name = target.name;
-    this.setState({
-      [name]: value
-    });
+    const newState = { ...this.state };
+    newState.form[name].error = "";
+    newState.form[name].value = value;
+    this.setState(newState);
   };
+
   handleFormSubmit = event => {
     event.preventDefault();
     this.props
@@ -55,16 +75,29 @@ class deliveryForm extends React.Component {
         console.log(this.props.history.push("/posts"));
       });
   };
-  handlePlacesAutocompleteChange = address => {
+
+  handlePlacesAutocompleteChange = (address, name) => {
     const newState = { ...this.state };
-    newState.form.address.value = address;
+    newState.form[name].value = address;
     this.setState(newState);
   };
 
   render() {
     return (
-      <div className="container">
+      <div className="container section">
         <form onSubmit={this.handleFormSubmit}>
+          <h2 className="title is-3">Récupération</h2>
+          <DateField
+            label="Date"
+            handleChange={this.handleFieldChange}
+            field={this.state.form.requested_pickup_date}
+            name="requested_pickup_date"
+          />
+          <HourField
+            field={this.state.form.requested_pickup_time}
+            name="requested_pickup_time"
+            handleChange={this.handleHourChange}
+          />
           <div className="field">
             <div className="control">
               <label className="label">Lieu de récupération</label>
@@ -73,8 +106,12 @@ class deliveryForm extends React.Component {
                   input: "input is-large"
                 }}
                 inputProps={{
-                  onChange: this.handlePlacesAutocompleteChange,
-                  value: this.state.form.address.value
+                  onChange: address =>
+                    this.handlePlacesAutocompleteChange(
+                      address,
+                      "pickup_address"
+                    ),
+                  value: this.state.form.pickup_address.value
                 }}
                 options={{
                   componentRestrictions: { country: ["fr"] }
@@ -82,9 +119,17 @@ class deliveryForm extends React.Component {
               />
             </div>
           </div>
+
+          <h2 className="title is-3">Livraison</h2>
+          <DateField
+            label="Date"
+            handleChange={this.handleFieldChange}
+            field={this.state.form.requested_pickup_date}
+            name="requested_drop_date"
+          />
           <HourField
-            field={this.state.form.requested_pickup_time}
-            name="requested_pickup_time"
+            field={this.state.form.requested_drop_time}
+            name="requested_drop_time"
             handleChange={this.handleHourChange}
           />
           <div className="field">
@@ -95,22 +140,71 @@ class deliveryForm extends React.Component {
                   input: "input is-large"
                 }}
                 inputProps={{
-                  onChange: this.handlePlacesAutocompleteChange,
-                  value: this.state.form.address.value
+                  onChange: address =>
+                    this.handlePlacesAutocompleteChange(
+                      address,
+                      "drop_address"
+                    ),
+                  value: this.state.form.drop_address.value
+                }}
+                options={{
+                  componentRestrictions: { country: ["fr"] }
                 }}
               />
             </div>
           </div>
-          <HourField
-            field={this.state.form.requested_drop_time}
-            name="requested_drop_time"
-            handleChange={this.handleHourChange}
+
+          <MontantField
+            handleChange={this.handleFieldChange}
+            name="montantHT"
+            field={this.state.form.montantHT}
+          />
+          <input
+            type="submit"
+            className="button is-large is-primary"
+            value="Envoyer"
           />
         </form>
       </div>
     );
   }
 }
+
+const MontantField = ({ field, handleChange, name }) => {
+  return (
+    <div className="field">
+      <label className="label">Montant de la commande HT</label>
+      <div className="control">
+        <input
+          className="input is-large"
+          name={name}
+          onChange={handleChange}
+          value={field.value}
+          type="number"
+        />
+      </div>
+      {field.error && <p class="help is-danger">{field.error}</p>}
+    </div>
+  );
+};
+
+const DateField = ({ field, handleChange, name, label }) => {
+  return (
+    <div className="field">
+      <label className="label">{label}</label>
+      <div className="control">
+        <input
+          className="input is-large"
+          name={name}
+          onChange={handleChange}
+          value={field.value}
+          type="date"
+        />
+      </div>
+      {field.error && <p class="help is-danger">{field.error}</p>}
+    </div>
+  );
+};
 
 const HourField = ({ field, handleChange, name }) => {
   return (
