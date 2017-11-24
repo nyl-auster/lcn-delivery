@@ -2,6 +2,7 @@ import React, { Component } from "react";
 //import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 import DeliveryFormPage from "./features/delivery/pages/DeliveryFormPage";
 import DeliveryPage from "./features/delivery/pages/DeliveryPage";
+import DeliveryListPage from "./features/delivery/pages/DeliveryListPage";
 import HomePage from "./features/homepage/pages/HomePage";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { ApolloProvider } from "react-apollo";
@@ -37,6 +38,7 @@ class App extends Component {
                 path="/deliveries/add"
                 component={DeliveryFormPage}
               />
+              <Route exact path="/deliveries" component={DeliveryListPage} />
               <Route exact path="/deliveries/:id" component={DeliveryPage} />
             </Switch>
           </Router>
