@@ -7,22 +7,36 @@ class DeliveryFormPage extends React.Component {
   render() {
     return (
       <div className="container">
-        <DeliveryForm {...this.props} createPost={this.props.createPost} />
+        <DeliveryForm {...this.props} />
       </div>
     );
   }
 }
 
 const createDelivery = gql`
-  mutation createDelivery($title: String!, $content: String!) {
-    createDelivery(title: $title, content: $content) {
-      id
-      title
-      content
+  mutation createDelivery(
+    $pickupdatetime: DateTime!
+    $dropdatetime: DateTime!
+    $pickupaddress: String!
+    $dropaddress: String!
+    $cargoamountht: Float
+  ) {
+    createDelivery(
+      pickupdatetime: $pickupdatetime
+      dropdatetime: $dropdatetime
+      pickupaddress: $pickupaddress
+      dropaddress: $dropaddress
+      cargoamountht: $cargoamountht
+    ) {
+      pickupdatetime
+      dropdatetime
+      pickupaddress
+      dropaddress
+      cargoamountht
     }
   }
 `;
 
-export default graphql(createDelivery, { name: "createPost" })(
+export default graphql(createDelivery, { name: "createDelivery" })(
   DeliveryFormPage
 );

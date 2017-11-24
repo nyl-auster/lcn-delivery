@@ -4,8 +4,6 @@
 type User @model {
   id: ID! @isUnique
   name: String
-  dateOfBirth: DateTime,
-  type:
   #posts: [Post!]! @relation(name: "UserPosts")
 }
 
@@ -14,4 +12,15 @@ type Post @model {
   title: String!
   content: String!
   #user: User! @relation(name: "UserPosts")
+}
+
+type Delivery @model {
+  id: ID! @isUnique
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  pickupdatetime: DateTime!
+  dropdatetime: DateTime!
+  pickupaddress: String!
+  dropaddress: String!
+  cargoamountht: Float
 }

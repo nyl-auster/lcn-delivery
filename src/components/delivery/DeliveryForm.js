@@ -44,6 +44,29 @@ class deliveryForm extends React.Component {
     };
   }
 
+  createDelivery() {
+    const pickupdatetime = `${this.state.form.requested_pickup_date.value}T${
+      this.state.form.requested_pickup_time.value
+    }:00.123Z`;
+    const dropdatetime = `${this.state.form.requested_drop_date.value}T${
+      this.state.form.requested_drop_time.value
+    }:00.123Z`;
+    const pickupaddress = this.state.form.pickup_address.value;
+    const dropaddress = this.state.form.drop_address.value;
+    const cargoamountht = parseFloat(this.state.form.montantHT.value);
+    const variables = {
+      pickupdatetime,
+      dropdatetime,
+      pickupaddress,
+      dropaddress,
+      cargoamountht
+    };
+    console.log(variables);
+    this.props.createDelivery({
+      variables
+    });
+  }
+
   handleHourChange = event => {
     const newState = { ...this.state };
     let { name, value } = event.target;
@@ -64,17 +87,7 @@ class deliveryForm extends React.Component {
 
   handleFormSubmit = event => {
     event.preventDefault();
-    this.props
-      .createPost({
-        variables: {
-          title: this.state.title,
-          content: this.state.content
-        }
-      })
-      .then(() => {
-        // redirect to posts list page after saving
-        console.log(this.props.history.push("/posts"));
-      });
+    this.createDelivery();
   };
 
   handlePlacesAutocompleteChange = (address, name) => {
