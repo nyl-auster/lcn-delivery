@@ -1,6 +1,6 @@
 import React from "react";
 import Delivery from "../components/Delivery";
-import Loader from "../../loader/components/Loader";
+import Loader from "../../app/components/Loader";
 import getDelivery from "../queries/getDelivery";
 import { graphql } from "react-apollo";
 import gql from "graphql-tag";

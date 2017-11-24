@@ -3,7 +3,8 @@ import React, { Component } from "react";
 import DeliveryFormPage from "./features/delivery/pages/DeliveryFormPage";
 import DeliveryPage from "./features/delivery/pages/DeliveryPage";
 import DeliveryListPage from "./features/delivery/pages/DeliveryListPage";
-import HomePage from "./features/homepage/pages/HomePage";
+import Menu from "./features/app/components/Menu";
+import HomePage from "./features/app/pages/HomePage";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { ApolloProvider } from "react-apollo";
 import { ApolloClient } from "apollo-client";
@@ -22,15 +23,18 @@ class App extends Component {
   render() {
     return (
       <ApolloProvider client={client}>
-        <div>
-          <section className="hero is-info">
-            <div className="hero-body">
-              <div className="container">
-                <h1 className="title">Demande de livraison</h1>
+        <Router>
+          <div>
+            <section className="hero is-info">
+              <div className="hero-body">
+                <div className="container">
+                  <h1 className="title">Demande de livraison</h1>
+                </div>
               </div>
-            </div>
-          </section>
-          <Router>
+              <div className="hero-foot">
+                <Menu />
+              </div>
+            </section>
             <Switch>
               <Route exact path="/" component={HomePage} />
               <Route
@@ -41,8 +45,8 @@ class App extends Component {
               <Route exact path="/deliveries" component={DeliveryListPage} />
               <Route exact path="/deliveries/:id" component={DeliveryPage} />
             </Switch>
-          </Router>
-        </div>
+          </div>
+        </Router>
       </ApolloProvider>
     );
   }

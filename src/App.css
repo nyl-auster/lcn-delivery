@@ -1,1 +1,3 @@
-
+.app-menu .active {
+  text-decoration: underline;
+}
