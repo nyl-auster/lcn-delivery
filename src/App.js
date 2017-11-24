@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import CourseForm from "./pages/CourseForm";
 import PostFormPage from "./pages/PostFormPage";
 import DeliveryFormPage from "./pages/DeliveryFormPage";
+import DeliveryPage from "./pages/DeliveryPage";
 import HomePage from "./pages/HomePage";
 import PostListPage from "./pages/PostListPage";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
@@ -38,6 +39,7 @@ class App extends Component {
               <Route exact path="/posts/add" component={PostFormPage} />
               <Route exact path="/posts" component={PostListPage} />
               <Route exact path="/delivery/add" component={DeliveryFormPage} />
+              <Route exact path="/delivery/:id" component={DeliveryPage} />
             </Switch>
           </Router>
         </div>

@@ -61,10 +61,13 @@ class deliveryForm extends React.Component {
       dropaddress,
       cargoamountht
     };
-    console.log(variables);
-    this.props.createDelivery({
-      variables
-    });
+    this.props
+      .createDelivery({
+        variables
+      })
+      .then(result => {
+        this.props.history.push("/delivery/" + result.data.createDelivery.id);
+      });
   }
 
   handleHourChange = event => {

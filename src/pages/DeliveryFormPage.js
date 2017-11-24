@@ -28,6 +28,9 @@ const createDelivery = gql`
       dropaddress: $dropaddress
       cargoamountht: $cargoamountht
     ) {
+      id
+      updatedAt
+      createdAt
       pickupdatetime
       dropdatetime
       pickupaddress
