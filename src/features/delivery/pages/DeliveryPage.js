@@ -1,6 +1,7 @@
 import React from "react";
 import Delivery from "../components/Delivery";
 import Loader from "../../loader/components/Loader";
+import getDelivery from "../queries/getDelivery";
 import { graphql } from "react-apollo";
 import gql from "graphql-tag";
 
@@ -20,21 +21,6 @@ class DeliveryPage extends React.Component {
     );
   }
 }
-
-const getDelivery = gql`
-  query getDelivery($id: ID!) {
-    delivery: Delivery(id: $id) {
-      id
-      cargoamountht
-      createdAt
-      updatedAt
-      pickupaddress
-      pickupdatetime
-      dropaddress
-      dropdatetime
-    }
-  }
-`;
 
 export default graphql(getDelivery, {
   options: props => ({
