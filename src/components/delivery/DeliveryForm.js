@@ -99,7 +99,7 @@ class deliveryForm extends React.Component {
   render() {
     return (
       <div className="delivery-form">
-        <div className="container section">
+        <div className="section">
           <form onSubmit={this.handleFormSubmit}>
             <h2 className="title is-3">Récupération</h2>
             <DateField

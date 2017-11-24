@@ -24,10 +24,10 @@ class App extends Component {
     return (
       <ApolloProvider client={client}>
         <div>
-          <section className="hero">
+          <section className="hero is-info">
             <div className="hero-body">
               <div className="container">
-                <h1 className="title">LCN Delivery</h1>
+                <h1 className="title">Demande de livraison</h1>
               </div>
             </div>
           </section>
