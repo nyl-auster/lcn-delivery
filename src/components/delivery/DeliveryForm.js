@@ -4,6 +4,7 @@ import PlacesAutocomplete, {
   geocodeByAddress,
   getLatLng
 } from "react-places-autocomplete";
+import "./DeliveryForm.css";
 
 class deliveryForm extends React.Component {
   constructor(props) {
@@ -84,87 +85,89 @@ class deliveryForm extends React.Component {
 
   render() {
     return (
-      <div className="container section">
-        <form onSubmit={this.handleFormSubmit}>
-          <h2 className="title is-3">Récupération</h2>
-          <DateField
-            label="Date"
-            handleChange={this.handleFieldChange}
-            field={this.state.form.requested_pickup_date}
-            name="requested_pickup_date"
-          />
-          <HourField
-            field={this.state.form.requested_pickup_time}
-            name="requested_pickup_time"
-            handleChange={this.handleHourChange}
-          />
-          <div className="field">
-            <div className="control">
-              <label className="label">Lieu de récupération</label>
-              <PlacesAutocomplete
-                classNames={{
-                  input: "input is-large"
-                }}
-                inputProps={{
-                  onChange: address =>
-                    this.handlePlacesAutocompleteChange(
-                      address,
-                      "pickup_address"
-                    ),
-                  value: this.state.form.pickup_address.value
-                }}
-                options={{
-                  componentRestrictions: { country: ["fr"] }
-                }}
-              />
+      <div className="delivery-form">
+        <div className="container section">
+          <form onSubmit={this.handleFormSubmit}>
+            <h2 className="title is-3">Récupération</h2>
+            <DateField
+              label="Date"
+              handleChange={this.handleFieldChange}
+              field={this.state.form.requested_pickup_date}
+              name="requested_pickup_date"
+            />
+            <HourField
+              field={this.state.form.requested_pickup_time}
+              name="requested_pickup_time"
+              handleChange={this.handleHourChange}
+            />
+            <div className="field">
+              <div className="control">
+                <label className="label">Lieu de récupération</label>
+                <PlacesAutocomplete
+                  classNames={{
+                    input: "input is-large"
+                  }}
+                  inputProps={{
+                    onChange: address =>
+                      this.handlePlacesAutocompleteChange(
+                        address,
+                        "pickup_address"
+                      ),
+                    value: this.state.form.pickup_address.value
+                  }}
+                  options={{
+                    componentRestrictions: { country: ["fr"] }
+                  }}
+                />
+              </div>
             </div>
-          </div>
 
-          <h2 className="title is-3">Livraison</h2>
-          <DateField
-            label="Date"
-            handleChange={this.handleFieldChange}
-            field={this.state.form.requested_pickup_date}
-            name="requested_drop_date"
-          />
-          <HourField
-            field={this.state.form.requested_drop_time}
-            name="requested_drop_time"
-            handleChange={this.handleHourChange}
-          />
-          <div className="field">
-            <div className="control">
-              <label className="label">Lieu de livraison</label>
-              <PlacesAutocomplete
-                classNames={{
-                  input: "input is-large"
-                }}
-                inputProps={{
-                  onChange: address =>
-                    this.handlePlacesAutocompleteChange(
-                      address,
-                      "drop_address"
-                    ),
-                  value: this.state.form.drop_address.value
-                }}
-                options={{
-                  componentRestrictions: { country: ["fr"] }
-                }}
-              />
+            <h2 className="title is-3">Livraison</h2>
+            <DateField
+              label="Date"
+              handleChange={this.handleFieldChange}
+              field={this.state.form.requested_pickup_date}
+              name="requested_drop_date"
+            />
+            <HourField
+              field={this.state.form.requested_drop_time}
+              name="requested_drop_time"
+              handleChange={this.handleHourChange}
+            />
+            <div className="field">
+              <div className="control">
+                <label className="label">Lieu de livraison</label>
+                <PlacesAutocomplete
+                  classNames={{
+                    input: "input is-large"
+                  }}
+                  inputProps={{
+                    onChange: address =>
+                      this.handlePlacesAutocompleteChange(
+                        address,
+                        "drop_address"
+                      ),
+                    value: this.state.form.drop_address.value
+                  }}
+                  options={{
+                    componentRestrictions: { country: ["fr"] }
+                  }}
+                />
+              </div>
             </div>
-          </div>
 
-          <MontantField
-            handleChange={this.handleFieldChange}
-            name="montantHT"
-            field={this.state.form.montantHT}
-          />
-          <input
-            type="submit"
-            className="button is-large is-primary"
-            value="Envoyer"
-          />
-        </form>
+            <MontantField
+              handleChange={this.handleFieldChange}
+              name="montantHT"
+              field={this.state.form.montantHT}
+            />
+            <input
+              type="submit"
+              className="button is-large is-primary"
+              value="Envoyer"
+            />
+          </form>
+        </div>
       </div>
     );
   }
