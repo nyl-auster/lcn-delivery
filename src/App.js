@@ -1,11 +1,8 @@
 import React, { Component } from "react";
 //import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
-import CourseForm from "./pages/CourseForm";
-import PostFormPage from "./pages/PostFormPage";
-import DeliveryFormPage from "./pages/DeliveryFormPage";
-import DeliveryPage from "./pages/DeliveryPage";
-import HomePage from "./pages/HomePage";
-import PostListPage from "./pages/PostListPage";
+import DeliveryFormPage from "./features/delivery/pages/DeliveryFormPage";
+import DeliveryPage from "./features/delivery/pages/DeliveryPage";
+import HomePage from "./features/homepage/pages/HomePage";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { ApolloProvider } from "react-apollo";
 import { ApolloClient } from "apollo-client";
@@ -35,11 +32,12 @@ class App extends Component {
           <Router>
             <Switch>
               <Route exact path="/" component={HomePage} />
-              <Route exact path="/courses/add" component={CourseForm} />
-              <Route exact path="/posts/add" component={PostFormPage} />
-              <Route exact path="/posts" component={PostListPage} />
-              <Route exact path="/delivery/add" component={DeliveryFormPage} />
-              <Route exact path="/delivery/:id" component={DeliveryPage} />
+              <Route
+                exact
+                path="/deliveries/add"
+                component={DeliveryFormPage}
+              />
+              <Route exact path="/deliveries/:id" component={DeliveryPage} />
             </Switch>
           </Router>
         </div>

@@ -1,5 +1,5 @@
 import React from "react";
-import DeliveryForm from "../components/delivery/DeliveryForm";
+import DeliveryForm from "../components/DeliveryForm";
 import { graphql } from "react-apollo";
 import gql from "graphql-tag";
 

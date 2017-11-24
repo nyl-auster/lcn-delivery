@@ -4,7 +4,7 @@ import PlacesAutocomplete, {
   geocodeByAddress,
   getLatLng
 } from "react-places-autocomplete";
-import "./DeliveryForm.css";
+import "../DeliveryForm.css";
 
 class deliveryForm extends React.Component {
   constructor(props) {
@@ -66,7 +66,7 @@ class deliveryForm extends React.Component {
         variables
       })
       .then(result => {
-        this.props.history.push("/delivery/" + result.data.createDelivery.id);
+        this.props.history.push("/deliveries/" + result.data.createDelivery.id);
       });
   }
 
