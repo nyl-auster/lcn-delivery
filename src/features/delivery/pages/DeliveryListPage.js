@@ -6,17 +6,17 @@ import gql from "graphql-tag";
 
 class DeliveryListPage extends React.Component {
   render() {
-    const { loading, posts } = this.props.data;
+    const { loading, deliveries } = this.props.data;
     return (
       <div className="container">
-        {loading ? <Loader /> : <DeliveryList posts={posts} />}
+        {loading ? <Loader /> : <DeliveryList deliveries={deliveries} />}
       </div>
     );
   }
 }
 
 const getAllDeliveries = gql`
-  query allPosts {
+  query allDeliveries {
     deliveries: allDeliveries {
       id
       cargoamountht
