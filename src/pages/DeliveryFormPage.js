@@ -6,7 +6,7 @@ import gql from "graphql-tag";
 class DeliveryFormPage extends React.Component {
   render() {
     return (
-      <div className="container">
+      <div className="container section">
         <DeliveryForm {...this.props} />
       </div>
     );

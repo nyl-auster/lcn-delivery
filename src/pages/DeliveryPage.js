@@ -7,10 +7,14 @@ import gql from "graphql-tag";
 class DeliveryPage extends React.Component {
   render() {
     if (this.props.data.loading) {
-      return <Loader />;
+      return (
+        <div className="container section">
+          <Loader />
+        </div>
+      );
     }
     return (
-      <div className="container">
+      <div className="container section">
         <Delivery {...this.props} />
       </div>
     );
@@ -20,6 +24,7 @@ class DeliveryPage extends React.Component {
 const getDelivery = gql`
   query getDelivery($id: ID!) {
     delivery: Delivery(id: $id) {
+      id
       cargoamountht
       createdAt
       updatedAt
