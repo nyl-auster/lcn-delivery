@@ -2,7 +2,6 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 
 const DeliveryList = ({ deliveries }) => {
-  console.log(deliveries);
   return (
     <div className="section">
       <table className="table">

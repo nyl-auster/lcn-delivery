@@ -3,7 +3,6 @@ import Delivery from "../components/Delivery";
 import Loader from "../../app/components/Loader";
 import getDelivery from "../queries/getDelivery";
 import { graphql } from "react-apollo";
-import gql from "graphql-tag";
 
 class DeliveryPage extends React.Component {
   render() {

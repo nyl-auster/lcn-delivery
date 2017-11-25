@@ -8,11 +8,6 @@ const Menu = () => (
         <nav className="tabs is-boxed">
           <ul>
             <li>
-              <NavLink exact to="/">
-                Accueil
-              </NavLink>
-            </li>
-            <li>
               <NavLink exact to="/deliveries/add">
                 Ajouter une livraison
               </NavLink>

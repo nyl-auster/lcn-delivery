@@ -12,11 +12,11 @@ class deliveryForm extends React.Component {
     const date = new Date();
     this.state = {
       form: {
-        requested_pickup_date: {
+        pickup_date: {
           error: null,
           value: moment().format("YYYY-MM-DD")
         },
-        requested_drop_date: {
+        drop_date: {
           error: null,
           value: moment().format("YYYY-MM-DD")
         },
@@ -32,11 +32,11 @@ class deliveryForm extends React.Component {
           error: null,
           value: "0"
         },
-        requested_pickup_time: {
+        pickup_time: {
           error: null,
           value: moment().format("H:mm")
         },
-        requested_drop_time: {
+        drop_time: {
           error: "",
           value: moment().format("H:mm")
         }
@@ -45,11 +45,11 @@ class deliveryForm extends React.Component {
   }
 
   createDelivery() {
-    const pickupdatetime = `${this.state.form.requested_pickup_date.value}T${
-      this.state.form.requested_pickup_time.value
+    const pickupdatetime = `${this.state.form.pickup_date.value}T${
+      this.state.form.pickup_time.value
     }:00.123Z`;
-    const dropdatetime = `${this.state.form.requested_drop_date.value}T${
-      this.state.form.requested_drop_time.value
+    const dropdatetime = `${this.state.form.drop_date.value}T${
+      this.state.form.drop_time.value
     }:00.123Z`;
     const pickupaddress = this.state.form.pickup_address.value;
     const dropaddress = this.state.form.drop_address.value;
@@ -107,12 +107,12 @@ class deliveryForm extends React.Component {
           <DateField
             label="Date"
             handleChange={this.handleFieldChange}
-            field={this.state.form.requested_pickup_date}
-            name="requested_pickup_date"
+            field={this.state.form.pickup_date}
+            name="pickup_date"
           />
           <HourField
-            field={this.state.form.requested_pickup_time}
-            name="requested_pickup_time"
+            field={this.state.form.pickup_time}
+            name="pickup_time"
             handleChange={this.handleHourChange}
           />
           <div className="field">
@@ -141,12 +141,12 @@ class deliveryForm extends React.Component {
           <DateField
             label="Date"
             handleChange={this.handleFieldChange}
-            field={this.state.form.requested_pickup_date}
-            name="requested_drop_date"
+            field={this.state.form.pickup_date}
+            name="drop_date"
           />
           <HourField
-            field={this.state.form.requested_drop_time}
-            name="requested_drop_time"
+            field={this.state.form.drop_time}
+            name="drop_time"
             handleChange={this.handleHourChange}
           />
           <div className="field">

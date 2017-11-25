@@ -4,7 +4,6 @@ import DeliveryFormPage from "./features/delivery/pages/DeliveryFormPage";
 import DeliveryPage from "./features/delivery/pages/DeliveryPage";
 import DeliveryListPage from "./features/delivery/pages/DeliveryListPage";
 import Menu from "./features/app/components/Menu";
-import HomePage from "./features/app/pages/HomePage";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { ApolloProvider } from "react-apollo";
 import { ApolloClient } from "apollo-client";
@@ -36,12 +35,12 @@ class App extends Component {
               </div>
             </section>
             <Switch>
-              <Route exact path="/" component={HomePage} />
               <Route
                 exact
                 path="/deliveries/add"
                 component={DeliveryFormPage}
               />
+              <Route exact path="/" component={DeliveryListPage} />
               <Route exact path="/deliveries" component={DeliveryListPage} />
               <Route exact path="/deliveries/:id" component={DeliveryPage} />
             </Switch>
