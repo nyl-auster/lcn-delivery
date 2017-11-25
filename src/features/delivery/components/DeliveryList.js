@@ -22,7 +22,7 @@ const DeliveryList = ({ deliveries }) => {
         <tbody>
           {deliveries.map(item => (
             <tr key={item.id}>
-              <td>{moment(item.createdAt).format("DD/M/Y")}</td>
+              <td>{moment(item.createdAt).format("DD/M/Y à hh:mm")}</td>
               <td>{item.pickupAddress}</td>
               <td>{item.dropAddress}</td>
               <td>{item.cargoAmountHt} €</td>

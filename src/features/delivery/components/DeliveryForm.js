@@ -47,6 +47,10 @@ class deliveryForm extends React.Component {
         drop_address_note: {
           error: "",
           value: ""
+        },
+        cargo_description: {
+          error: "",
+          value: ""
         }
       }
     };
@@ -64,12 +68,15 @@ class deliveryForm extends React.Component {
     const dropAddressPhone = this.state.form.drop_address_phone.value;
     const dropAddressNote = this.state.form.drop_address_note.value;
     const cargoAmountHt = parseFloat(this.state.form.montantHT.value);
+    const cargoDescription = this.state.form.cargo_description.value;
+
     const variables = {
       pickupDateTime,
       dropDateTime,
       pickupAddress,
       dropAddress,
       cargoAmountHt,
+      cargoDescription,
       dropAddressNote,
       dropAddressPhone
     };
@@ -115,92 +122,106 @@ class deliveryForm extends React.Component {
     return (
       <div className="delivery-form">
         <form onSubmit={this.handleFormSubmit}>
-          <h2 className="title is-3">Récupération</h2>
-          <DateField
-            label="Date"
-            handleChange={this.handleFieldChange}
-            field={this.state.form.pickup_date}
-            name="pickup_date"
-          />
-          <HourField
-            field={this.state.form.pickup_time}
-            name="pickup_time"
-            handleChange={this.handleHourChange}
-          />
-          <div className="field">
-            <div className="control">
-              <label className="label">Lieu de récupération</label>
-              <PlacesAutocomplete
-                classNames={{
-                  input: "input is-large"
-                }}
-                inputProps={{
-                  onChange: address =>
-                    this.handlePlacesAutocompleteChange(
-                      address,
-                      "pickup_address"
-                    ),
-                  value: this.state.form.pickup_address.value
-                }}
-                options={{
-                  componentRestrictions: { country: ["fr"] }
-                }}
-              />
+          <div className="section">
+            <h2 className="title is-3">Récupération</h2>
+            <DateField
+              label="Date"
+              handleChange={this.handleFieldChange}
+              field={this.state.form.pickup_date}
+              name="pickup_date"
+            />
+            <HourField
+              field={this.state.form.pickup_time}
+              name="pickup_time"
+              handleChange={this.handleHourChange}
+            />
+            <div className="field">
+              <div className="control">
+                <label className="label">Lieu de récupération</label>
+                <PlacesAutocomplete
+                  classNames={{
+                    input: "input is-large"
+                  }}
+                  inputProps={{
+                    onChange: address =>
+                      this.handlePlacesAutocompleteChange(
+                        address,
+                        "pickup_address"
+                      ),
+                    value: this.state.form.pickup_address.value
+                  }}
+                  options={{
+                    componentRestrictions: { country: ["fr"] }
+                  }}
+                />
+              </div>
             </div>
           </div>
 
-          <h2 className="title is-3">Livraison</h2>
-          <DateField
-            label="Date"
-            handleChange={this.handleFieldChange}
-            field={this.state.form.pickup_date}
-            name="drop_date"
-          />
-          <HourField
-            field={this.state.form.drop_time}
-            name="drop_time"
-            handleChange={this.handleHourChange}
-          />
-          <div className="field">
-            <div className="control">
-              <label className="label">Lieu de livraison</label>
-              <PlacesAutocomplete
-                classNames={{
-                  input: "input is-large"
-                }}
-                inputProps={{
-                  onChange: address =>
-                    this.handlePlacesAutocompleteChange(
-                      address,
-                      "drop_address"
-                    ),
-                  value: this.state.form.drop_address.value
-                }}
-                options={{
-                  componentRestrictions: { country: ["fr"] }
-                }}
-              />
+          <div className="section">
+            <h2 className="title is-3">Livraison</h2>
+            <DateField
+              label="Date"
+              handleChange={this.handleFieldChange}
+              field={this.state.form.pickup_date}
+              name="drop_date"
+            />
+            <HourField
+              field={this.state.form.drop_time}
+              name="drop_time"
+              handleChange={this.handleHourChange}
+            />
+            <div className="field">
+              <div className="control">
+                <label className="label">Lieu de livraison</label>
+                <PlacesAutocomplete
+                  classNames={{
+                    input: "input is-large"
+                  }}
+                  inputProps={{
+                    onChange: address =>
+                      this.handlePlacesAutocompleteChange(
+                        address,
+                        "drop_address"
+                      ),
+                    value: this.state.form.drop_address.value
+                  }}
+                  options={{
+                    componentRestrictions: { country: ["fr"] }
+                  }}
+                />
+              </div>
             </div>
+
+            <PhoneField
+              handleChange={this.handleFieldChange}
+              name="drop_address_phone"
+              field={this.state.form.drop_address_phone}
+            />
+
+            <NoteField
+              label="Notes sur l'adresse de livraison"
+              handleChange={this.handleFieldChange}
+              name="drop_address_note"
+              field={this.state.form.drop_address_note}
+            />
           </div>
 
-          <PhoneField
-            handleChange={this.handleFieldChange}
-            name="drop_address_phone"
-            field={this.state.form.drop_address_phone}
-          />
+          <div className="section">
+            <h2 className="title is-3">COMMANDE</h2>
+            <MontantField
+              handleChange={this.handleFieldChange}
+              name="montantHT"
+              field={this.state.form.montantHT}
+            />
+            <CargoDescriptionField
+              label="Description de la commande"
+              handleChange={this.handleFieldChange}
+              name="cargo_description"
+              field={this.state.form.cargo_description}
+            />
+          </div>
 
-          <NoteField
-            label="Note"
-            handleChange={this.handleFieldChange}
-            name="drop_address_note"
-            field={this.state.form.drop_address_note}
-          />
-
-          <MontantField
-            handleChange={this.handleFieldChange}
-            name="montantHT"
-            field={this.state.form.montantHT}
-          />
           <input
             type="submit"
             className="button is-large is-primary"
@@ -267,6 +288,24 @@ const DateField = ({ field, handleChange, name, label }) => {
 };
 
 const NoteField = ({ field, handleChange, name, label }) => {
+  return (
+    <div className="field">
+      <label className="label">{label}</label>
+      <div className="control">
+        <textarea
+          rows={4}
+          className="textarea is-large"
+          name={name}
+          onChange={handleChange}
+          value={field.value}
+        />
+      </div>
+      {field.error && <p class="help is-danger">{field.error}</p>}
+    </div>
+  );
+};
+
+const CargoDescriptionField = ({ field, handleChange, name, label }) => {
   return (
     <div className="field">
       <label className="label">{label}</label>
