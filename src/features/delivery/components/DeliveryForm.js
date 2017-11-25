@@ -358,8 +358,7 @@ const HourField = ({ field, handleChange, name }) => {
           name={name}
           onChange={handleChange}
           value={field.value}
-          type="text"
-          maxLength={5}
+          type="time"
           step="1"
           min="0"
           max="24"
