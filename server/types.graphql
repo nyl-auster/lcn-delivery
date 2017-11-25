@@ -1,26 +1,24 @@
 # The following types define the data model of the example service
 # based on which the GraphQL API is generated
 
-type User @model {
-  id: ID! @isUnique
-  name: String
-  #posts: [Post!]! @relation(name: "UserPosts")
-}
-
-type Post @model {
-  id: ID! @isUnique
-  title: String!
-  content: String!
-  #user: User! @relation(name: "UserPosts")
-}
-
 type Delivery @model {
   id: ID! @isUnique
   createdAt: DateTime!
   updatedAt: DateTime!
-  pickupdatetime: DateTime!
-  dropdatetime: DateTime!
-  pickupaddress: String!
-  dropaddress: String!
-  cargoamountht: Float
+  pickupDateTime: DateTime!
+  dropDateTime: DateTime!
+  pickupAddress: String!
+  dropAddress: String!
+  cargoAmountHt: Float
+}
+
+type User @model {
+  # Required system field:
+  id: ID! @isUnique # read-only (managed by Graphcool)
+  # Optional system fields (remove if not needed):
+  createdAt: DateTime! # read-only (managed by Graphcool)
+  updatedAt: DateTime! # read-only (managed by Graphcool)
+  email: String! @isUnique
+  password: String!
+  name: String!
 }
