@@ -11,6 +11,7 @@ type Delivery @model {
   dropAddress: String!
   dropAddressPhone: String!
   dropAddressNote: String!
+  cargoDescription: String! @migrationValue(value: "")
   cargoAmountHt: Float
 }
 
