@@ -21,8 +21,8 @@ const DeliveryList = ({ deliveries }) => {
           {deliveries.map(item => (
             <tr key={item.id}>
               <td>{item.createdAt}</td>
-              <td>{item.pickupaddress}</td>
-              <td>{item.dropaddress}</td>
+              <td>{item.pickupAddress}</td>
+              <td>{item.dropAddress}</td>
               <td>{item.id}</td>
               <td>
                 <NavLink to={"/deliveries/" + item.id}>

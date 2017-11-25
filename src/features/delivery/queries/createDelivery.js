@@ -16,13 +16,6 @@ export default gql`
       cargoAmountHt: $cargoAmountHt
     ) {
       id
-      updatedAt
-      createdAt
-      pickupDateTime
-      dropDateTime
-      pickupAddress
-      dropAddress
-      cargoAmountHt
     }
   }
 `;

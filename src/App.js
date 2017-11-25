@@ -15,7 +15,8 @@ const client = new ApolloClient({
   link: new HttpLink({
     uri: "https://api.graph.cool/simple/v1/cja8sepu81z3q0122402wih0f"
   }),
-  cache: new InMemoryCache()
+  cache: new InMemoryCache(),
+  connectToDevTools: true
 });
 
 class App extends Component {

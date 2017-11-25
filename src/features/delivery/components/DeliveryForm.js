@@ -61,6 +61,7 @@ class deliveryForm extends React.Component {
       dropAddress,
       cargoAmountHt
     };
+    console.log(variables);
     this.props
       .createDelivery({
         variables

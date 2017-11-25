@@ -23,7 +23,7 @@
     "react-scripts": "1.0.17"
   },
   "scripts": {
-    "dev": "npm run start-react",
+    "dev": "NODE_ENV=\"dev\" npm run start-react",
     "start": "npm run start-react",
     "start-react": "react-scripts start",
     "build": "react-scripts build",
