@@ -45,21 +45,21 @@ class deliveryForm extends React.Component {
   }
 
   createDelivery() {
-    const pickupdatetime = `${this.state.form.pickup_date.value}T${
+    const pickupDateTime = `${this.state.form.pickup_date.value}T${
       this.state.form.pickup_time.value
     }:00.123Z`;
-    const dropdatetime = `${this.state.form.drop_date.value}T${
+    const dropDateTime = `${this.state.form.drop_date.value}T${
       this.state.form.drop_time.value
     }:00.123Z`;
-    const pickupaddress = this.state.form.pickup_address.value;
-    const dropaddress = this.state.form.drop_address.value;
-    const cargoamountht = parseFloat(this.state.form.montantHT.value);
+    const pickupAddress = this.state.form.pickup_address.value;
+    const dropAddress = this.state.form.drop_address.value;
+    const cargoAmountHt = parseFloat(this.state.form.montantHT.value);
     const variables = {
-      pickupdatetime,
-      dropdatetime,
-      pickupaddress,
-      dropaddress,
-      cargoamountht
+      pickupDateTime,
+      dropDateTime,
+      pickupAddress,
+      dropAddress,
+      cargoAmountHt
     };
     this.props
       .createDelivery({

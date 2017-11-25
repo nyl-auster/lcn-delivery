@@ -4,13 +4,13 @@ export default gql`
   query allDeliveries {
     deliveries: allDeliveries {
       id
-      cargoamountht
+      cargoAmountHt
       createdAt
       updatedAt
-      pickupaddress
-      pickupdatetime
-      dropaddress
-      dropdatetime
+      pickupAddress
+      pickupDateTime
+      dropAddress
+      dropDateTime
     }
   }
 `;

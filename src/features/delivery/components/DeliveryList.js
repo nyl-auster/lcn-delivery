@@ -2,6 +2,9 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 
 const DeliveryList = ({ deliveries }) => {
+  if (!deliveries) {
+    return <div className="section">Aucune livraison n'a été trouvée.</div>;
+  }
   return (
     <div className="section">
       <table className="table">

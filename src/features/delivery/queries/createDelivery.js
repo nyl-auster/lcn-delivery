@@ -2,27 +2,27 @@ import gql from "graphql-tag";
 
 export default gql`
   mutation createDelivery(
-    $pickupdatetime: DateTime!
-    $dropdatetime: DateTime!
-    $pickupaddress: String!
-    $dropaddress: String!
-    $cargoamountht: Float
+    $pickupDateTime: DateTime!
+    $dropDateTime: DateTime!
+    $pickupAddress: String!
+    $dropAddress: String!
+    $cargoAmountHt: Float
   ) {
     createDelivery(
-      pickupdatetime: $pickupdatetime
-      dropdatetime: $dropdatetime
-      pickupaddress: $pickupaddress
-      dropaddress: $dropaddress
-      cargoamountht: $cargoamountht
+      pickupDateTime: $pickupDateTime
+      dropDateTime: $dropDateTime
+      pickupAddress: $pickupAddress
+      dropAddress: $dropAddress
+      cargoAmountHt: $cargoAmountHt
     ) {
       id
       updatedAt
       createdAt
-      pickupdatetime
-      dropdatetime
-      pickupaddress
-      dropaddress
-      cargoamountht
+      pickupDateTime
+      dropDateTime
+      pickupAddress
+      dropAddress
+      cargoAmountHt
     }
   }
 `;

@@ -4,13 +4,13 @@ export default gql`
   query getDelivery($id: ID!) {
     delivery: Delivery(id: $id) {
       id
-      cargoamountht
+      cargoAmountHt
       createdAt
       updatedAt
-      pickupaddress
-      pickupdatetime
-      dropaddress
-      dropdatetime
+      pickupAddress
+      pickupDateTime
+      dropAddress
+      dropDateTime
     }
   }
 `;
