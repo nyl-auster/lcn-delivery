@@ -10,6 +10,8 @@ export default gql`
       pickupAddress
       pickupDateTime
       dropAddress
+      dropAddressPhone
+      cargoDescription
       dropDateTime
       cargoAmountHt
     }

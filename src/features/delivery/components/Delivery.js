@@ -11,6 +11,8 @@ const Delivery = props => {
       <div>Adresse de livraison : {delivery.dropAddress}</div>
       <div>Téléphone de la personne livrée : {delivery.dropAddressPhone}</div>
       <div>Remarques importantes : {delivery.dropAddressNote}</div>
+      <div>Description de la commande : {delivery.cargoDescription}</div>
+      <div>Montant de la commande : {delivery.cargoAmountHt}€</div>
     </div>
   );
 };
