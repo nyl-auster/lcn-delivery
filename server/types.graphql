@@ -9,6 +9,8 @@ type Delivery @model {
   dropDateTime: DateTime!
   pickupAddress: String!
   dropAddress: String!
+  dropAddressPhone: String!
+  dropAddressNote: String!
   cargoAmountHt: Float
 }
 
