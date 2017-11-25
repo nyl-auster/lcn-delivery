@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 //import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
-import DeliveryFormPage from "./features/delivery/pages/DeliveryFormPage";
-import DeliveryPage from "./features/delivery/pages/DeliveryPage";
-import DeliveryListPage from "./features/delivery/pages/DeliveryListPage";
-import Menu from "./features/app/components/Menu";
+import DeliveryFormPage from "./modules/deliveryForm/pages/DeliveryFormPage";
+import DeliveryPage from "./modules/delivery/pages/DeliveryPage";
+import DeliveryListPage from "./modules/delivery/pages/DeliveryListPage";
+import Menu from "./modules/app/components/Menu";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { ApolloProvider } from "react-apollo";
 import { ApolloClient } from "apollo-client";
