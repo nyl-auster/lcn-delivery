@@ -37,19 +37,19 @@ class deliveryForm extends React.Component {
           value: moment().format("H:mm")
         },
         drop_time: {
-          error: "",
+          error: null,
           value: moment().format("H:mm")
         },
         drop_address_phone: {
-          error: "",
+          error: null,
           value: ""
         },
         drop_address_note: {
-          error: "",
+          error: null,
           value: ""
         },
         cargo_description: {
-          error: "",
+          error: null,
           value: ""
         }
       }
@@ -118,7 +118,29 @@ class deliveryForm extends React.Component {
     this.setState(newState);
   };
 
+  formIsValid() {
+    if (
+      this.state.form.pickup_date.value &&
+      this.state.form.pickup_time.value &&
+      this.state.form.drop_date.value &&
+      this.state.form.drop_time.value &&
+      this.state.form.pickup_address.value &&
+      this.state.form.drop_address.value &&
+      this.state.form.drop_address_phone.value &&
+      this.state.form.drop_address_note.value &&
+      this.state.form.montantHT.value &&
+      this.state.form.cargo_description.value
+    ) {
+      return true;
+    }
+    return false;
+  }
+
   render() {
+    const submitButtonAttributes = {};
+    if (!this.formIsValid()) {
+      submitButtonAttributes.disabled = true;
+    }
     return (
       <div className="delivery-form">
         <form onSubmit={this.handleFormSubmit}>
@@ -223,6 +245,7 @@ class deliveryForm extends React.Component {
           </div>
 
           <input
+            {...submitButtonAttributes}
             type="submit"
             className="button is-large is-primary"
             value="Envoyer"
