@@ -1,12 +1,9 @@
 import React from "react";
 import moment from "moment";
-import PlacesAutocomplete, {
-  geocodeByAddress,
-  getLatLng
-} from "react-places-autocomplete";
-import "../DeliveryForm.css";
+import PlacesAutocomplete from "react-places-autocomplete";
+import "../DeliveryRequest.css";
 
-class deliveryForm extends React.Component {
+class deliveryRequestForm extends React.Component {
   constructor(props) {
     super(props);
     const date = new Date();
@@ -85,7 +82,9 @@ class deliveryForm extends React.Component {
         variables
       })
       .then(result => {
-        this.props.history.push("/deliveries/" + result.data.createDelivery.id);
+        this.props.history.push(
+          "/delivery-requests/" + result.data.createDelivery.id
+        );
       });
   }
 
@@ -373,4 +372,4 @@ const SubmitButton = () => (
   <input className="button is-info" type="submit" value="soumettre" />
 );
 
-export default deliveryForm;
+export default deliveryRequestForm;

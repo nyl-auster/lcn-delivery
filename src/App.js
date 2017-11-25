@@ -1,10 +1,16 @@
 import React, { Component } from "react";
 //import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
-import DeliveryFormPage from "./modules/deliveryForm/pages/DeliveryFormPage";
+import DeliveryRequestFormPage from "./modules/deliveryRequest/pages/DeliveryRequestFormPage";
+import DeliveryRequestRoutes from "./modules/deliveryRequest/DeliveryRequestRoutes";
 import DeliveryPage from "./modules/delivery/pages/DeliveryPage";
 import DeliveryListPage from "./modules/delivery/pages/DeliveryListPage";
 import Menu from "./modules/app/components/Menu";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  NavLink
+} from "react-router-dom";
 import { ApolloProvider } from "react-apollo";
 import { ApolloClient } from "apollo-client";
 import { HttpLink } from "apollo-link-http";
@@ -38,12 +44,19 @@ class App extends Component {
             <Switch>
               <Route
                 exact
-                path="/deliveries/add"
-                component={DeliveryFormPage}
+                path="/"
+                component={() => (
+                  <div className="section container">
+                    <NavLink
+                      to="/delivery-requests-form"
+                      className="button is-info"
+                    >
+                      Ajouter une livraison
+                    </NavLink>
+                  </div>
+                )}
               />
-              <Route exact path="/" component={DeliveryListPage} />
-              <Route exact path="/deliveries" component={DeliveryListPage} />
-              <Route exact path="/deliveries/:id" component={DeliveryPage} />
+              <DeliveryRequestRoutes />
             </Switch>
           </div>
         </Router>
