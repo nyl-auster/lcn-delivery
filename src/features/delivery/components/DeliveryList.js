@@ -11,22 +11,20 @@ const DeliveryList = ({ deliveries }) => {
       <table className="table">
         <thead>
           <tr>
-            <th>crée le</th>
+            <th>Récupération à</th>
+            <th>Livraison avant</th>
             <th>adresse de récupération</th>
             <th>adresse de livraison</th>
-            <th>AmountHT</th>
-            <th>id</th>
             <th>Détails</th>
           </tr>
         </thead>
         <tbody>
           {deliveries.map(item => (
             <tr key={item.id}>
-              <td>{moment(item.createdAt).format("DD/M/Y à hh:mm")}</td>
+              <td>{moment(item.pickupDateTime).format("DD/M/Y à hh:mm")}</td>
+              <td>{moment(item.dropDateTime).format("DD/M/Y à hh:mm")}</td>
               <td>{item.pickupAddress}</td>
               <td>{item.dropAddress}</td>
-              <td>{item.cargoAmountHt} €</td>
-              <td>{item.id}</td>
               <td>
                 <NavLink to={"/deliveries/" + item.id}>
                   <span className="button is-info">Détail</span>
