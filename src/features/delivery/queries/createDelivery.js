@@ -6,6 +6,8 @@ export default gql`
     $dropDateTime: DateTime!
     $pickupAddress: String!
     $dropAddress: String!
+    $dropAddressPhone: String!
+    $dropAddressNote: String!
     $cargoAmountHt: Float
   ) {
     createDelivery(
@@ -13,6 +15,8 @@ export default gql`
       dropDateTime: $dropDateTime
       pickupAddress: $pickupAddress
       dropAddress: $dropAddress
+      dropAddressPhone: $dropAddressPhone
+      dropAddressNote: $dropAddressNote
       cargoAmountHt: $cargoAmountHt
     ) {
       id

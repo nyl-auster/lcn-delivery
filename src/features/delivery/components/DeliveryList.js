@@ -1,5 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import moment from "moment";
 
 const DeliveryList = ({ deliveries }) => {
   if (!deliveries) {
@@ -13,6 +14,7 @@ const DeliveryList = ({ deliveries }) => {
             <th>crée le</th>
             <th>adresse de récupération</th>
             <th>adresse de livraison</th>
+            <th>AmountHT</th>
             <th>id</th>
             <th>Détails</th>
           </tr>
@@ -20,9 +22,10 @@ const DeliveryList = ({ deliveries }) => {
         <tbody>
           {deliveries.map(item => (
             <tr key={item.id}>
-              <td>{item.createdAt}</td>
+              <td>{moment(item.createdAt).format("DD/M/Y")}</td>
               <td>{item.pickupAddress}</td>
               <td>{item.dropAddress}</td>
+              <td>{item.cargoAmountHt} €</td>
               <td>{item.id}</td>
               <td>
                 <NavLink to={"/deliveries/" + item.id}>

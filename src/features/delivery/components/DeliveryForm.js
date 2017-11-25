@@ -39,6 +39,14 @@ class deliveryForm extends React.Component {
         drop_time: {
           error: "",
           value: moment().format("H:mm")
+        },
+        drop_address_phone: {
+          error: "",
+          value: ""
+        },
+        drop_address_note: {
+          error: "",
+          value: ""
         }
       }
     };
@@ -53,15 +61,18 @@ class deliveryForm extends React.Component {
     }:00.123Z`;
     const pickupAddress = this.state.form.pickup_address.value;
     const dropAddress = this.state.form.drop_address.value;
+    const dropAddressPhone = this.state.form.drop_address_phone.value;
+    const dropAddressNote = this.state.form.drop_address_note.value;
     const cargoAmountHt = parseFloat(this.state.form.montantHT.value);
     const variables = {
       pickupDateTime,
       dropDateTime,
       pickupAddress,
       dropAddress,
-      cargoAmountHt
+      cargoAmountHt,
+      dropAddressNote,
+      dropAddressPhone
     };
-    console.log(variables);
     this.props
       .createDelivery({
         variables
@@ -172,6 +183,19 @@ class deliveryForm extends React.Component {
             </div>
           </div>
 
+          <PhoneField
+            handleChange={this.handleFieldChange}
+            name="drop_address_phone"
+            field={this.state.form.drop_address_phone}
+          />
+
+          <NoteField
+            label="Note"
+            handleChange={this.handleFieldChange}
+            name="drop_address_note"
+            field={this.state.form.drop_address_note}
+          />
+
           <MontantField
             handleChange={this.handleFieldChange}
             name="montantHT"
@@ -206,6 +230,24 @@ const MontantField = ({ field, handleChange, name }) => {
   );
 };
 
+const PhoneField = ({ field, handleChange, name }) => {
+  return (
+    <div className="field">
+      <label className="label">Téléphone</label>
+      <div className="control">
+        <input
+          className="input is-large"
+          name={name}
+          onChange={handleChange}
+          value={field.value}
+          type="text"
+        />
+      </div>
+      {field.error && <p class="help is-danger">{field.error}</p>}
+    </div>
+  );
+};
+
 const DateField = ({ field, handleChange, name, label }) => {
   return (
     <div className="field">
@@ -217,6 +259,24 @@ const DateField = ({ field, handleChange, name, label }) => {
           onChange={handleChange}
           value={field.value}
           type="date"
+        />
+      </div>
+      {field.error && <p class="help is-danger">{field.error}</p>}
+    </div>
+  );
+};
+
+const NoteField = ({ field, handleChange, name, label }) => {
+  return (
+    <div className="field">
+      <label className="label">{label}</label>
+      <div className="control">
+        <textarea
+          rows={4}
+          className="textarea is-large"
+          name={name}
+          onChange={handleChange}
+          value={field.value}
         />
       </div>
       {field.error && <p class="help is-danger">{field.error}</p>}

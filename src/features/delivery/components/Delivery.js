@@ -7,8 +7,10 @@ const Delivery = props => {
       <h1 className="title is-3">#commande {delivery.id}</h1>
       <div>Créee le : {delivery.createdAt}</div>
       <div>Mise à jour le : {delivery.updatedAt}</div>
-      <div>Adresse de collecte : {delivery.pickupaddress}</div>
-      <div>Adresse de livraison : {delivery.dropaddress}</div>
+      <div>Adresse de collecte : {delivery.pickupAddress}</div>
+      <div>Adresse de livraison : {delivery.dropAddress}</div>
+      <div>Téléphone de la personne livrée : {delivery.dropAddressPhone}</div>
+      <div>Remarques importantes : {delivery.dropAddressNote}</div>
     </div>
   );
 };
