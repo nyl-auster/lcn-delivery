@@ -238,7 +238,7 @@ class deliveryForm extends React.Component {
           <input
             {...submitButtonAttributes}
             type="submit"
-            className="button is-large is-primary"
+            className="button is-large is-info"
             value="Envoyer"
           />
         </form>
@@ -359,9 +359,5 @@ const HourField = ({ field, handleChange, name }) => {
     </div>
   );
 };
-
-const SubmitButton = () => (
-  <input className="button is-info" type="submit" value="soumettre" />
-);
 
 export default deliveryForm;

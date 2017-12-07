@@ -1,11 +1,13 @@
 import React from "react";
 import { BrowserRouter as Switch, Route } from "react-router-dom";
-import DeliveryRequestFormPage from "./pages/DeliveryFormPage";
-import DeliveryRequestViewPage from "./pages/DeliveryPage";
+import DeliveryFormPage from "./pages/DeliveryFormPage";
+import DeliveryPage from "./pages/DeliveryPage";
+import DeliveryListPage from "./pages/DeliveryListPage";
 
 export default () => {
   return [
-    <Route exact path="/delivery-form" component={DeliveryRequestFormPage} />,
-    <Route exact path="/delivery/:id" component={DeliveryRequestViewPage} />
+    <Route exact path="/delivery-form" component={DeliveryFormPage} />,
+    <Route exact path="/deliveries/:id" component={DeliveryPage} />,
+    <Route exact path="/deliveries" component={DeliveryListPage} />
   ];
 };
