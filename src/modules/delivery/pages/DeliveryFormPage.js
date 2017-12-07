@@ -10,9 +10,7 @@ class DeliveryFormPage extends React.Component {
         variables: deliveryData
       })
       .then(result => {
-        this.props.history.push(
-          "/delivery-requests/" + result.data.createDelivery.id
-        );
+        this.props.history.push("/delivery/" + result.data.createDelivery.id);
       });
   };
   render() {
