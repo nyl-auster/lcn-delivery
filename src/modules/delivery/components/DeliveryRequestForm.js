@@ -1,7 +1,7 @@
 import React from "react";
 import moment from "moment";
 import PlacesAutocomplete from "react-places-autocomplete";
-import "../DeliveryRequest.css";
+import "../DeliveryRequestForm.css";
 
 class deliveryRequestForm extends React.Component {
   constructor(props) {
@@ -53,7 +53,7 @@ class deliveryRequestForm extends React.Component {
     };
   }
 
-  createDelivery() {
+  getDeliveryData() {
     const pickupDateTime = `${this.state.form.pickup_date.value}T${
       this.state.form.pickup_time.value
     }:00.123Z`;
@@ -77,15 +77,7 @@ class deliveryRequestForm extends React.Component {
       dropAddressNote,
       dropAddressPhone
     };
-    this.props
-      .createDelivery({
-        variables
-      })
-      .then(result => {
-        this.props.history.push(
-          "/delivery-requests/" + result.data.createDelivery.id
-        );
-      });
+    return variables;
   }
 
   handleHourChange = event => {
@@ -106,9 +98,9 @@ class deliveryRequestForm extends React.Component {
     this.setState(newState);
   };
 
-  handleFormSubmit = event => {
+  handleSubmit = event => {
     event.preventDefault();
-    this.createDelivery();
+    this.props.onSubmit(this.getDeliveryData());
   };
 
   handlePlacesAutocompleteChange = (address, name) => {
@@ -138,11 +130,11 @@ class deliveryRequestForm extends React.Component {
   render() {
     const submitButtonAttributes = {};
     if (!this.formIsValid()) {
-      submitButtonAttributes.disabled = true;
+      //  submitButtonAttributes.disabled = true;
     }
     return (
       <div className="delivery-form">
-        <form onSubmit={this.handleFormSubmit}>
+        <form onSubmit={this.handleSubmit}>
           <div className="section">
             <h2 className="title is-3">Récupération</h2>
             <DateField

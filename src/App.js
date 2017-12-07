@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 //import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
-import DeliveryRequestFormPage from "./modules/deliveryRequest/pages/DeliveryRequestFormPage";
-import DeliveryRequestRoutes from "./modules/deliveryRequest/DeliveryRequestRoutes";
+import DeliveryRoutes from "./modules/delivery/Routes";
 import DeliveryPage from "./modules/delivery/pages/DeliveryPage";
 import DeliveryListPage from "./modules/delivery/pages/DeliveryListPage";
 import Menu from "./modules/app/components/Menu";
@@ -47,16 +46,13 @@ class App extends Component {
                 path="/"
                 component={() => (
                   <div className="section container">
-                    <NavLink
-                      to="/delivery-requests-form"
-                      className="button is-info"
-                    >
+                    <NavLink to="/delivery-form" className="button is-info">
                       Ajouter une livraison
                     </NavLink>
                   </div>
                 )}
               />
-              <DeliveryRequestRoutes />
+              <DeliveryRoutes />
             </Switch>
           </div>
         </Router>
