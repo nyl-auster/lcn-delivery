@@ -1,9 +1,9 @@
 import React from "react";
-import DeliveryRequestForm from "../components/DeliveryRequestForm";
+import DeliveryForm from "../components/DeliveryForm";
 import createDelivery from "../queries/createDelivery";
 import { graphql } from "react-apollo";
 
-class DeliveryRequestFormPage extends React.Component {
+class DeliveryFormPage extends React.Component {
   handleSubmit = deliveryData => {
     this.props
       .createDelivery({
@@ -18,12 +18,12 @@ class DeliveryRequestFormPage extends React.Component {
   render() {
     return (
       <div className="container section">
-        <DeliveryRequestForm onSubmit={this.handleSubmit} />
+        <DeliveryForm onSubmit={this.handleSubmit} />
       </div>
     );
   }
 }
 
 export default graphql(createDelivery, { name: "createDelivery" })(
-  DeliveryRequestFormPage
+  DeliveryFormPage
 );

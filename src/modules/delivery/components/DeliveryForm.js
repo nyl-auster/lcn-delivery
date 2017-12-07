@@ -1,9 +1,9 @@
 import React from "react";
 import moment from "moment";
 import PlacesAutocomplete from "react-places-autocomplete";
-import "../DeliveryRequestForm.css";
+import "../DeliveryForm.css";
 
-class deliveryRequestForm extends React.Component {
+class deliveryForm extends React.Component {
   constructor(props) {
     super(props);
     const date = new Date();
@@ -364,4 +364,4 @@ const SubmitButton = () => (
   <input className="button is-info" type="submit" value="soumettre" />
 );
 
-export default deliveryRequestForm;
+export default deliveryForm;
